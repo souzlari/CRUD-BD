@@ -1,15 +1,17 @@
-const express = require('express')
+const express = require("express")
 const router = express.Router()
-const controller = require('../controllers/estudioController')
-//listar todos os estudios/get/find
-router.get('/', controller.getAll)
-//criar um novo estudio/post/save
-router.post('/', controller.createStudio)
-//listar um estudio/get/findById
+const controller = require("../controller/estudioController")
 
-//atualizar uma informacao especifica num estudio/patch/findById/save
-router.patch('/:id', controller.updateOne)
+//GET - listar todos os studios 
+router.get("/", controller.getAll) 
 
-//deletar um estudio/delete/findById/remove
+//CREATE - criar um studio 
+router.post("/create", controller.createStudio)
+
+//DELETE - deletar um studio por id  
+router.delete("/:id", controller.deleteEstudio) 
+
+//PATCH - atualizar qualquer dado do studio por id  
+router.patch("/update/:id", controller.updateEstudio)
 
 module.exports = router
